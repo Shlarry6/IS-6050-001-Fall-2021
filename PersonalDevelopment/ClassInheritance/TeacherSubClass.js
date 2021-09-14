@@ -1,4 +1,5 @@
 "use strict";
+import {Person} from './PersonClass.js';
 
 class Teacher extends Person {
     constructor(first, last, school) {
