@@ -55,6 +55,7 @@ const port = 3000,
     res.writeHead(httpStatus.StatusCodes.OK, contentTypes.js);
     utils.getFile("public/js/confetti_cuisine.js", res);
   });
+  
   //inclass addition for about.html
   router.get("/about.html", (req, res) => {
     res.writeHead(httpStatus.StatusCodes.OK, contentTypes.html);
