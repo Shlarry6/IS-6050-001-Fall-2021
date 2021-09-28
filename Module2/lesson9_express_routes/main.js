@@ -1,29 +1,38 @@
-"use strict";
+"use strict"; 
 
-const homeController = require("./controllers/homeController");
+// Import required libraries
 
 const port = 3000,
-    express = require('express'),
-    app = express();
+  express = require("express"),
+  app = express(),
+  homeController = require("./controllers/homeController");
 
-app.use((req, res, next) => {
-    console.log(`requests made to: ${req.url}`);
-    next();
-});
+  // Import built-in middleware for handling request bodies in urlencoded or JSON format
+  app.use(express.urlencoded({extended:false}));
+  app.use(express.json());
 
-app.use(
-    express.urlencoded({
-        extended: false
-    })                      // telling my express.js application to parse url-encoded data
-);
-app.use(express.json());
+ // Tell the app to use the logRequestPaths function of the homeController as middleware
+  app.use(homeController.logRequestPaths);
 
-app.post("/", homeController.createPostRoute); // create new post route for home page.
+  // Register GET route with a route parameter
+  app.get("/items/:vegetable", homeController.sendReqParam);
 
-app.get("/items/:vegetable", homeController.sendReqParam); // handle GET requests to /items/:vegetable
+  
+  // Register POST route
+  app.post("/", homeController.handlePosts);
 
-app.get("/", homeController.sendHomeParam);
+  // Register GET route for home page (/)
+  app.get("/", homeController.showHomePage);
 
-app.listen(port, () => {
-    console.log(`Server running on port: ${port}`);
-});
+ 
+
+  // Start app on port 3000
+  app.listen(port, () => {
+      console.log(`Server running on port ${port}`);
+  });
+
+
+
+ 
+
+  
