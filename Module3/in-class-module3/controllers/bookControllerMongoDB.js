@@ -17,8 +17,8 @@ const ObjectID = mongodb.ObjectId; // Used to convert string IDs to BSON objectI
 /**************** CONFIGURE AND INITIALIZE DATABASE ****************/
 
 // Connection URL and database name
-const connectionURL = ""; // ********* ATLAS CONNECTION STRING HERE!! ********* //
-const databaseName = "crud-test2";
+const connectionURL = "mongodb+srv://dbUser:dbUserPassword@is6050cluster.ckwsf.mongodb.net/crud-test?retryWrites=true&w=majority"; // ********* ATLAS CONNECTION STRING HERE!! ********* //
+const databaseName = "crud-test";
 const collectionName = "books";
 
 // Make sure a connectionURL is set before proceeding
